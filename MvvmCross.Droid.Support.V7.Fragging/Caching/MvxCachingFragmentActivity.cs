@@ -425,8 +425,16 @@ namespace MvvmCross.Droid.Support.V7.Fragging.Caching
 			var fragmentTag = GetFragmentTag(request, bundle, fragmentType);
 			FragmentCacheConfiguration.RegisterFragmentToCache(fragmentTag, fragmentType, request.ViewModelType);
 
-			ShowFragment(fragmentTag, fragmentAttribute.FragmentContentId, bundle);
-			return true;
+            int contentId;
+            if (fragmentAttribute.FragmentContentId != null)
+            {
+                contentId = fragmentAttribute.FragmentContentId.Value;
+            }
+            else
+                contentId = Resources.GetIdentifier(fragmentAttribute.FragmentContentName, "id", this.PackageName);
+
+            ShowFragment(fragmentTag, contentId, bundle);
+            return true;
 		}
 
 		public virtual bool Close(IMvxViewModel viewModel)

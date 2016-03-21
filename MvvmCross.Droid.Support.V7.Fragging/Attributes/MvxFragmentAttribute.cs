@@ -18,6 +18,12 @@ namespace MvvmCross.Droid.Support.V7.Fragging.Attributes
             FragmentContentId = fragmentContentId;
         }
 
+        public MvxFragmentAttribute(Type parentActivityViewModelType, string fragmentContentName)
+        {
+            ParentActivityViewModelType = parentActivityViewModelType;
+            FragmentContentName = fragmentContentName;
+        }
+
         /// <summary>
 		/// That shall be used only if you are using non generic fragments.
 		/// </summary>
@@ -37,5 +43,6 @@ namespace MvvmCross.Droid.Support.V7.Fragging.Attributes
         /// Content id - place where to show fragment.
         /// </summary>
         public int FragmentContentId { get; private set; }
+        public string FragmentContentName { get; private set; }
     }
 }
